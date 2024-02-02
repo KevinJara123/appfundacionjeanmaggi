@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 // Importa el widget HomeViews desde el archivo home.dart
 import 'package:appfundacionjeanmaggi/views/home_views.dart';
+// Importa el widget Hoyviews desde el archivo hoy_views.dart
+import 'package:appfundacionjeanmaggi/views/hoy_views.dart';
 
 // Define un widget de tipo StatefulWidget llamado MainScreen
 class MainScreen extends StatefulWidget {
@@ -38,11 +40,11 @@ class _MainScreenState extends State<MainScreen> {
             });
           },
           // Color del indicador que resalta la opción seleccionada
-          indicatorColor: Color(0xFFFFFFFF),
+          indicatorColor: const Color(0xFFFFFFFF),
           // Índice de la opción actualmente seleccionada
           selectedIndex: currentPageIndex,
           // Color de fondo de la barra de navegación
-          backgroundColor: Color.fromARGB(255, 255, 0, 0),
+          backgroundColor: const Color.fromARGB(255, 255, 0, 0),
           // Lista de destinos (opciones) en la barra de navegación
           destinations: const <Widget>[
             NavigationDestination(
@@ -80,15 +82,20 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   // Método privado para construir el cuerpo de la pantalla según el índice actual
-  Widget _buildBody() {
+   Widget _buildBody() {
     // Utiliza una declaración switch para determinar qué vista mostrar según el índice
     switch (currentPageIndex) {
       // Si el índice es 0, devuelve la vista HomeViews
       case 0:
         return const HomeViews();
-      // Si el índice no es 0, devuelve un contenedor de tamaño cero (puedes cambiar esto según tus necesidades)
+        
+      // Si el índice es 1, devuelve la vista HoyView
+      case 1:
+        return const HoyView();
+              
+      // Si el índice no es 0 ni 1, devuelve un contenedor de tamaño cero (puedes cambiar esto según tus necesidades)
       default:
         return const SizedBox.shrink();
     }
-  }
+   }
 }

@@ -10,19 +10,17 @@ class LoginView extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Stack(
         children: [
+          Image.network(
+            'https://scontent.fncj2-1.fna.fbcdn.net/v/t1.6435-9/105935692_3601123769904384_448219930109794819_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=dd63ad&_nc_ohc=J9q4vj9l8NoAX-ofy7N&_nc_ht=scontent.fncj2-1.fna&oh=00_AfAyNGLDTqJHOnaoZLdU13iRKGkWLIo6dZU8iLbonUsrmg&oe=65E4B2B4', // Reemplaza con la URL real de la imagen
+            width: double.infinity,
+            height: 300,
+            fit: BoxFit.cover,
+          ),
           ClipPath(
             clipper: CustomShapeClipper(),
             child: Container(
               width: double.infinity,
               height: 300,
-              color: Colors.red,
-              child: Center(
-                child: Icon(
-                  Icons.person,
-                  color: Colors.white,
-                  size: 80,
-                ),
-              ),
             ),
           ),
           Center(
@@ -40,15 +38,28 @@ class LoginView extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _buildCustomTextField(Icons.email, 'Enter your email', TextInputType.emailAddress),
+                      const Text(
+                        'Inicia sesión',  // Texto agregado
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const SizedBox(height: 10),
-                      _buildCustomTextField(Icons.lock, 'Enter your password', TextInputType.visiblePassword, obscureText: true),
+                      _buildCustomTextField(Icons.email, 'Enter your email',
+                          TextInputType.emailAddress),
+                      const SizedBox(height: 10),
+                      _buildCustomTextField(Icons.lock, 'Enter your password',
+                          TextInputType.visiblePassword,
+                          obscureText: true),
                       const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const MainScreen()),
+                            MaterialPageRoute(
+                                builder: (context) => const MainScreen()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -74,7 +85,7 @@ class LoginView extends StatelessWidget {
           Positioned(
             bottom: 20,
             child: Container(
-              width: MediaQuery.of(context).size.width, // Utiliza el ancho completo de la pantalla
+              width: MediaQuery.of(context).size.width,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -87,7 +98,7 @@ class LoginView extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20), // Ajusta el margen según tus necesidades
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
                         _buildSocialButton(Icons.android, 'Google'),
@@ -107,7 +118,9 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Widget _buildCustomTextField(IconData prefixIcon, String placeholder, TextInputType inputType, {bool obscureText = false}) {
+  Widget _buildCustomTextField(
+      IconData prefixIcon, String placeholder, TextInputType inputType,
+      {bool obscureText = false}) {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       child: TextField(
@@ -116,7 +129,8 @@ class LoginView extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: const Color.fromARGB(255, 255, 255, 255),
-          contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(color: Colors.red),
@@ -177,7 +191,8 @@ class CustomShapeClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final Path path = Path();
     path.lineTo(0, size.height - 50);
-    path.quadraticBezierTo(size.width / 2, size.height, size.width, size.height - 50);
+    path.quadraticBezierTo(
+        size.width / 2, size.height, size.width, size.height - 50);
     path.lineTo(size.width, 0);
     path.close();
     return path;
