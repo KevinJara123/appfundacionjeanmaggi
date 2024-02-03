@@ -13,7 +13,7 @@ class LoginView extends StatelessWidget {
           Image.network(
             'https://scontent.fncj2-1.fna.fbcdn.net/v/t1.6435-9/105935692_3601123769904384_448219930109794819_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=dd63ad&_nc_ohc=J9q4vj9l8NoAX-ofy7N&_nc_ht=scontent.fncj2-1.fna&oh=00_AfAyNGLDTqJHOnaoZLdU13iRKGkWLIo6dZU8iLbonUsrmg&oe=65E4B2B4', // Reemplaza con la URL real de la imagen
             width: double.infinity,
-            height: 300,
+            height: 250,
             fit: BoxFit.cover,
           ),
           ClipPath(

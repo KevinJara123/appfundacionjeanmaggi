@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:appfundacionjeanmaggi/views/login_views.dart'; // Importa tu vista de inicio de sesión
 
+
 void main() => runApp(const NavigationBarApp());
 
 class NavigationBarApp extends StatelessWidget {
